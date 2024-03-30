@@ -9,10 +9,15 @@
 <l>dev_open_window_fit_image (Image, 0, 0, -1, -1, WindowHandle)</l>
 <c></c>
 <l>dev_display (Image)</l>
+<c>*** 灰度图像的形态学运算，保留灰度级别信息</c>
+<c>*** 灰度开运算，让亮的小区域变暗</c>
+<l>gray_opening_shape (Image, ImageOpening, 7, 7, 'octagon')</l>
+<c>*** 灰度闭运算，让暗的小区域变亮</c>
+<l>gray_closing_shape (Image, ImageClosing, 7, 7, 'octagon')</l>
+<c>*** ImageOpening与ImageClosing灰度值相差超过offset的部分，这样一来得到的前景区域就是原图亮和暗的小区域</c>
+<l>dyn_threshold (ImageOpening, ImageClosing, RegionDynThresh, 75, 'not_equal')</l>
 <c></c>
-<l>gray_opening_shape (Image, ImageOpening, 11, 11, 'octagon')</l>
-<c></c>
-<l>gray_closing_shape (ImageOpening, ImageClosing, 11, 11, 'octagon')</l>
+<l>dev_display (RegionDynThresh)</l>
 </body>
 <docu id="main">
 <parameters/>
